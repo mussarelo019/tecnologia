@@ -1,5 +1,5 @@
 //variáveis da bolinha
-let xBolinha = 100;
+let xYron = 100;
 let yBolinha = 200;
 let diametro = 20;
 let raio = diametro / 2;
@@ -9,7 +9,7 @@ let xRaqueteOponente = 585;
 let yRaqueteOponente = 150;
 
 //velocidade da bolinha
-let velocidadeXBolinha = 6;
+let velocidadexYron = 6;
 let velocidadeYBolinha = 6;
 
 //variáveis da raquete
@@ -37,7 +37,7 @@ function setup() {
 
 function draw() {
     background(0);
-    mostraBolinha();
+    funcaoCarol();
     movimentaBolinha();
     verificaColisaoBorda();
     mostraRaquete(xRaquete, yRaquete);
@@ -49,18 +49,18 @@ function draw() {
     incluiPlacar() 
     marcaPonto();
 }
-function mostraBolinha() {
-  circle(xBolinha, yBolinha, diametro);
+function funcaoCarol() {
+  circle(xYron, yBolinha, diametro);
 }
 
 function movimentaBolinha() {
-  xBolinha += velocidadeXBolinha;
+  xYron += velocidadexYron;
   yBolinha += velocidadeYBolinha;
 }
 
 function verificaColisaoBorda() {
-  if (xBolinha + raio > width || xBolinha - raio < 0) {
-    velocidadeXBolinha *= -1;
+  if (xYron + raio > width || xYron - raio < 0) {
+    velocidadexYron *= -1;
   }
   if (yBolinha + raio > height || yBolinha - raio < 0) {
     velocidadeYBolinha *= -1;
@@ -81,16 +81,16 @@ function movimentaMinhaRaquete() {
 }
 
 function verificaColisaoRaquete() {
-  if (xBolinha - raio < xRaquete + raqueteComprimento && yBolinha - raio < yRaquete + raqueteAltura && yBolinha + raio > yRaquete) {
-    velocidadeXBolinha *= -1;
+  if (xYron - raio < xRaquete + raqueteComprimento && yBolinha - raio < yRaquete + raqueteAltura && yBolinha + raio > yRaquete) {
+    velocidadexYron *= -1;
      raquetada.play();
   }
 }
 
 function verificaColisaoRaquete(x, y) {
-    colidiu = collideRectCircle(x, y, raqueteComprimento, raqueteAltura, xBolinha, yBolinha, raio);
+    colidiu = collideRectCircle(x, y, raqueteComprimento, raqueteAltura, xYron, yBolinha, raio);
     if (colidiu){
-        velocidadeXBolinha *= -1;
+        velocidadexYron *= -1;
         raquetada.play();
   }
 }
@@ -124,11 +124,11 @@ function incluiPlacar(){
 
 
 function marcaPonto() {
-    if (xBolinha > 590) {
+    if (xYron > 590) {
         meusPontos += 1;
         ponto.play();
     }
-    if (xBolinha < 10) {
+    if (xYron < 10) {
         pontosDoOponente += 1;
         ponto.play();
     }
